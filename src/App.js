@@ -1,11 +1,6 @@
 import React from 'react';
+import Shoppies from './pages/Shoppies';
 
-function App() {
-  return (
-    <div className="text-4xl">
-      Hello World
-    </div>
-  );
-}
+const App = () => <Shoppies />;
 
 export default App;
