@@ -1,20 +1,62 @@
 import React from 'react';
-import MovieCard from './MovieCard';
+import PropTypes from 'prop-types';
 
-const SearchResults = () => {
-  console.log('object');
-  return (
-    <div className="flex flex-col p-6">
-      <p className="mb-8 font-bold text-3xl">Results for &quot;ram&quot;</p>
-      <div style={{ minHeight: '300px' }} className="grid grid-cols-3 gap-y-8 gap-x-4">
-        <MovieCard />
-        <MovieCard />
-        <MovieCard />
-        <MovieCard />
-        <MovieCard />
+// COMPONENTS
+import MovieCard from './MovieCard';
+import Loader from './Loader';
+
+const SearchResults = ({
+  searchResults,
+  isSearching, header, handleNominate,
+}) => {
+  console.log(searchResults);
+  const renderContent = () => {
+    if (isSearching) {
+      return <Loader small />;
+    }
+    if (searchResults <= 0 && !isSearching) {
+      return <p className="text-s-green text-xl text-center">Your search results popup here</p>;
+    }
+    return (
+      <div style={{ minHeight: '300px' }} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-y-4 gap-x-2">
+        {searchResults
+          .map(({
+            imdbID, Title, Year, Plot, Poster, isNominated,
+          }) => (
+            <MovieCard
+              key={imdbID}
+              id={imdbID}
+              title={Title}
+              year={Year}
+              plot={Plot}
+              poster={Poster}
+              isInResult
+              isNominated={isNominated}
+              handleNominate={handleNominate}
+            />
+          ))}
       </div>
+    );
+  };
+  return (
+    <div className="flex flex-col p-4 flex-1 relative">
+      {header && <p className="mb-8 font-bold text-3xl">{`Results for "${header}"`}</p>}
+      {renderContent()}
     </div>
   );
+};
+
+SearchResults.defaultProps = {
+  header: '',
+};
+
+SearchResults.propTypes = {
+  searchResults: PropTypes.arrayOf(PropTypes.shape({
+
+  })).isRequired,
+  isSearching: PropTypes.bool.isRequired,
+  header: PropTypes.string,
+  handleNominate: PropTypes.func.isRequired,
 };
 
 export default SearchResults;

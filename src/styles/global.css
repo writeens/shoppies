@@ -1,0 +1,67 @@
+/*CHARTS CSS */
+
+/*
+*SPLINE CHART CSS - ProviderGrowthStat
+*/
+.providerGrowthStat .highcharts-point {
+  fill: #2460d8;
+}
+.providerGrowthStat .highcharts-point-hover {
+  fill: #91c71a;
+}
+.providerGrowthStat .highcharts-graph {
+  stroke: #2460d8;
+}
+
+.clientGrowthStat .highcharts-point {
+  fill: #FEA43D;
+}
+.clientGrowthStat .highcharts-point-hover {
+  fill: #91c71a;
+}
+.clientGrowthStat .highcharts-graph {
+  /* fill: #2460d8; */
+  stroke: #FEA43D;
+}
+
+
+/**AREA CHARTS**/
+.areaRevenue .highcharts-point-hover {
+  fill: #91c71a;
+}
+/*CHARTS CSS */
+
+
+@keyframes ldio-rjnrubu985 {
+  0% { transform: translate(-50%,-50%) rotate(0deg); }
+  100% { transform: translate(-50%,-50%) rotate(360deg); }
+}
+.ldio-rjnrubu985 div {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #0f14b9;
+  border-top-color: transparent;
+  border-radius: 50%;
+}
+.ldio-rjnrubu985 div {
+  animation: ldio-rjnrubu985 1s linear infinite;
+  top: 100px;
+  left: 100px
+}
+.loadingio-spinner-rolling-5kcwe81bj9a {
+  width: 200px;
+  height: 200px;
+  display: inline-block;
+  overflow: hidden;
+  background: rgba(NaN, NaN, NaN, 0);
+}
+.ldio-rjnrubu985 {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform: translateZ(0) scale(1);
+  backface-visibility: hidden;
+  transform-origin: 0 0; /* see note above */
+}
+.ldio-rjnrubu985 div { box-sizing: content-box; }
