@@ -29,9 +29,9 @@ const Shoppies = () => {
 
   /** INITIATE SEARCH WHEN USER CLICKS ENTER */
   const startSearch = async (e) => {
-    e.preventDefault();
     const isFocused = document.activeElement === e.target;
-    if (e.code === 'Enter' && isFocused) {
+    if ((e.code === 'Enter' && isFocused)
+    || (e.code === undefined && e.target.id === 'search')) {
       setIsSearching(true);
       setSearchResultHeader('');
       const { data } = await fetchSearchData(searchTerm, page);
