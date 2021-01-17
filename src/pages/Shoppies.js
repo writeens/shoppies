@@ -21,6 +21,12 @@ const Shoppies = () => {
     return nominationIndex >= 0;
   };
 
+  /** UPDATE NOMINATIONS IN LOCAL STORAGE */
+  const saveToLocalStorage = (data) => {
+    const stringifyData = JSON.stringify(data);
+    localStorage.setItem('shoppies-nominations', stringifyData);
+  };
+
   /** INITIATE SEARCH WHEN USER CLICKS ENTER */
   const startSearch = async (e) => {
     e.preventDefault();
@@ -66,17 +72,39 @@ const Shoppies = () => {
       }
       return item;
     }));
-    setNominations([...nominations, { ...nomination, isNominated: true }]);
+    const updatedNominations = [...nominations, { ...nomination, isNominated: true }];
+    setNominations(updatedNominations);
+
+    saveToLocalStorage(updatedNominations);
   };
 
   /** HANDLE REMOVE NOMINATION */
   const handleRemoveNomination = (id) => {
+    // REMOVE ITEM FROM NOMINATIONS LIST
+    const newNominations = nominations.filter((item) => item.imdbID !== id);
+    setNominations(newNominations);
 
+    // CHECK IF ITEM IS IN SEARCH RESULTS AND UPDATE ACCORDINGLY
+    const updatedSearchResults = searchResults.map((item) => {
+      if (item.imdbID === id) {
+        return {
+          ...item,
+          isNominated: false,
+        };
+      }
+      return item;
+    });
+
+    setSearchResults(updatedSearchResults);
+
+    saveToLocalStorage(newNominations);
   };
 
-  // LISTEN FOR CHANGES IN SEARCH TERM
+  // SETUP NOMINATIONS ON MOUNT
   useEffect(() => {
-  }, [searchTerm]);
+    const data = JSON.parse(localStorage.getItem('shoppies-nominations'));
+    setNominations(data);
+  }, []);
 
   return (
     <div className="min-h-screen min-w-full bg-s-offwhite font-poppins text-s-green p-4">
