@@ -1,37 +1,3 @@
-/*CHARTS CSS */
-
-/*
-*SPLINE CHART CSS - ProviderGrowthStat
-*/
-.providerGrowthStat .highcharts-point {
-  fill: #2460d8;
-}
-.providerGrowthStat .highcharts-point-hover {
-  fill: #91c71a;
-}
-.providerGrowthStat .highcharts-graph {
-  stroke: #2460d8;
-}
-
-.clientGrowthStat .highcharts-point {
-  fill: #FEA43D;
-}
-.clientGrowthStat .highcharts-point-hover {
-  fill: #91c71a;
-}
-.clientGrowthStat .highcharts-graph {
-  /* fill: #2460d8; */
-  stroke: #FEA43D;
-}
-
-
-/**AREA CHARTS**/
-.areaRevenue .highcharts-point-hover {
-  fill: #91c71a;
-}
-/*CHARTS CSS */
-
-
 @keyframes ldio-rjnrubu985 {
   0% { transform: translate(-50%,-50%) rotate(0deg); }
   100% { transform: translate(-50%,-50%) rotate(360deg); }
@@ -65,3 +31,18 @@
   transform-origin: 0 0; /* see note above */
 }
 .ldio-rjnrubu985 div { box-sizing: content-box; }
+
+.noty_theme__sunset.noty_type__success {
+  background-color: #054A49;
+  color: #fff; 
+}
+
+.noty_has_timeout.noty_has_progressbar .noty_progressbar {
+  background-color: #fff;
+  opacity: 0.4; 
+}
+
+.noty_body {
+  font-family: Poppins, sans-serif;
+  font-size: 0.7rem !important;
+}

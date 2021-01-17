@@ -7,7 +7,7 @@ import MovieCard from './MovieCard';
 const Nominations = ({ nominations, handleRemoveNomination }) => {
   console.log(nominations);
   return (
-    <div className="flex flex-col flex-1 p-6">
+    <div className="flex flex-col flex-1 p-2">
       <p className="mb-8 font-bold text-3xl">Nominations</p>
       <div className="grid grid-cols-3 gap-y-8 gap-x-4">
         {nominations

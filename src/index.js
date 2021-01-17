@@ -1,6 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './tailwind.css';
+import '../node_modules/noty/lib/noty.css';
+import '../node_modules/noty/lib/themes/mint.css';
+import '../node_modules/noty/lib/themes/sunset.css';
 import './styles/global.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';

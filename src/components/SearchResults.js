@@ -9,7 +9,7 @@ const SearchResults = ({
   searchResults,
   isSearching, header, handleNominate,
 }) => {
-  console.log(searchResults);
+  /** HANDLE WHAT RENDERS */
   const renderContent = () => {
     if (isSearching) {
       return <Loader small />;
@@ -39,7 +39,7 @@ const SearchResults = ({
     );
   };
   return (
-    <div className="flex flex-col p-4 flex-1 relative">
+    <div className="flex flex-col p-2 flex-1 relative">
       {header && <p className="mb-8 font-bold text-3xl">{`Results for "${header}"`}</p>}
       {renderContent()}
     </div>

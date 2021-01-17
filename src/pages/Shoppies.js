@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import fetchSearchData from '../api/helpers';
 import Nominations from '../components/Nominations';
+import Notify from '../components/Notify';
 import SearchBar from '../components/SearchBar';
 import SearchResults from '../components/SearchResults';
 
@@ -60,6 +61,7 @@ const Shoppies = () => {
     const isInNomination = isInNominationList(id);
     if (isInNomination) {
       // THROW ERROR
+      // Notify('Already nominated', 'error');
       return;
     }
     const nomination = searchResults.find((item) => item.imdbID === id);
@@ -74,6 +76,8 @@ const Shoppies = () => {
     }));
     const updatedNominations = [...nominations, { ...nomination, isNominated: true }];
     setNominations(updatedNominations);
+
+    Notify('Movie Nominated Successfully', 'success');
 
     saveToLocalStorage(updatedNominations);
   };
@@ -98,6 +102,8 @@ const Shoppies = () => {
     setSearchResults(updatedSearchResults);
 
     saveToLocalStorage(newNominations);
+
+    Notify('Movie removed successfully', 'success');
   };
 
   // SETUP NOMINATIONS ON MOUNT
