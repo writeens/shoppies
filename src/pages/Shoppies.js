@@ -1,7 +1,6 @@
-/* eslint-disable no-param-reassign */
-/* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from 'react';
 import fetchSearchData from '../api/helpers';
+import InfoBanner from '../components/InfoBanner';
 import Nominations from '../components/Nominations';
 import Notify from '../components/Notify';
 import SearchBar from '../components/SearchBar';
@@ -13,8 +12,8 @@ const Shoppies = () => {
   const [isSearching, setIsSearching] = useState(false);
   const [searchResults, setSearchResults] = useState([]);
   const [page, setPage] = useState(1);
-  const [searchCount, setSearchCount] = useState(0);
   const [nominations, setNominations] = useState([]);
+  const [modalIsOpen, setModalIsOpen] = useState(false);
 
   /** CHECK NOMINATION */
   const isInNominationList = (id) => {
@@ -35,11 +34,10 @@ const Shoppies = () => {
     if (e.code === 'Enter' && isFocused) {
       setIsSearching(true);
       setSearchResultHeader('');
-      const { data, count } = await fetchSearchData(searchTerm, page);
+      const { data } = await fetchSearchData(searchTerm, page);
       if (data.length <= 0) {
         setSearchResults([]);
         setPage(page);
-        setSearchCount(count);
         setIsSearching(false);
         setSearchResultHeader(searchTerm);
         return;
@@ -49,7 +47,6 @@ const Shoppies = () => {
         isNominated: isInNominationList(item.imdbID),
       })));
       setPage(page);
-      setSearchCount(count);
       setIsSearching(false);
       setSearchResultHeader(searchTerm);
     }
@@ -57,11 +54,15 @@ const Shoppies = () => {
 
   /** HANDLE ADD NOMINATION TO NOMINATION LIST */
   const handleNominate = (id) => {
+    // CHECK NUMBER OF MOVIES IN NOMINATION LIST
+    if (nominations.length === 5) {
+      setModalIsOpen(true);
+      return;
+    }
+
     // CHECK IF ITEM IS ALREADY NOMINATED
     const isInNomination = isInNominationList(id);
     if (isInNomination) {
-      // THROW ERROR
-      // Notify('Already nominated', 'error');
       return;
     }
     const nomination = searchResults.find((item) => item.imdbID === id);
@@ -77,7 +78,7 @@ const Shoppies = () => {
     const updatedNominations = [...nominations, { ...nomination, isNominated: true }];
     setNominations(updatedNominations);
 
-    Notify('Movie Nominated Successfully', 'success');
+    Notify('Movie nominated successfully', 'success');
 
     saveToLocalStorage(updatedNominations);
   };
@@ -113,7 +114,7 @@ const Shoppies = () => {
   }, []);
 
   return (
-    <div className="min-h-screen min-w-full bg-s-offwhite font-poppins text-s-green p-4">
+    <div className="min-h-screen flex flex-col min-w-full bg-s-offwhite font-poppins text-s-green">
       <p className="text-7xl font-semibold text-center mt-20 mb-10">The Shoppies</p>
       <p className="text-xl font-normal text-s-grey text-center mb-20">Nominate your best movies.</p>
 
@@ -136,6 +137,7 @@ const Shoppies = () => {
         <Nominations nominations={nominations} handleRemoveNomination={handleRemoveNomination} />
       </div>
 
+      <InfoBanner isOpen={modalIsOpen} closeModal={() => setModalIsOpen(false)} />
     </div>
   );
 };
