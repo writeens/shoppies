@@ -110,7 +110,11 @@ const Shoppies = () => {
   // SETUP NOMINATIONS ON MOUNT
   useEffect(() => {
     const data = JSON.parse(localStorage.getItem('shoppies-nominations'));
-    setNominations(data);
+    if (data.length > 0) {
+      setNominations(data);
+    } else {
+      setNominations([]);
+    }
   }, []);
 
   return (
