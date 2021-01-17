@@ -115,28 +115,29 @@ const Shoppies = () => {
 
   return (
     <div className="min-h-screen flex flex-col min-w-full bg-s-offwhite font-poppins text-s-green">
-      <p className="text-7xl font-semibold text-center mt-20 mb-10">The Shoppies</p>
-      <p className="text-xl font-normal text-s-grey text-center mb-20">Nominate your best movies.</p>
+      <div className="p-4">
+        <p className=" text-5xl md:text-7xl font-semibold text-center mt-20 mb-10">The Shoppies</p>
+        <p className="text-xl font-normal text-s-grey text-center mb-20">Nominate your best movies.</p>
 
-      <div className="flex justify-center w-full mb-20">
-        <SearchBar
-          searchTerm={searchTerm}
-          setSearchTerm={(e) => setSearchTerm(e.target.value)}
-          startSearch={startSearch}
-        />
+        <div className="flex justify-center w-full mb-20">
+          <SearchBar
+            searchTerm={searchTerm}
+            setSearchTerm={(e) => setSearchTerm(e.target.value)}
+            startSearch={startSearch}
+          />
+        </div>
+
+        <div className="flex flex-col sm:flex-row">
+          <SearchResults
+            searchResults={searchResults}
+            isSearching={isSearching}
+            header={searchResultHeader}
+            handleNominate={handleNominate}
+            nominations={nominations}
+          />
+          <Nominations nominations={nominations} handleRemoveNomination={handleRemoveNomination} />
+        </div>
       </div>
-
-      <div className="flex">
-        <SearchResults
-          searchResults={searchResults}
-          isSearching={isSearching}
-          header={searchResultHeader}
-          handleNominate={handleNominate}
-          nominations={nominations}
-        />
-        <Nominations nominations={nominations} handleRemoveNomination={handleRemoveNomination} />
-      </div>
-
       <InfoBanner isOpen={modalIsOpen} closeModal={() => setModalIsOpen(false)} />
     </div>
   );

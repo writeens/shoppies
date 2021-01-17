@@ -6,7 +6,6 @@ const API_KEY = process.env.REACT_APP_OMDB_APIKEY;
 const getPlot = async (imdbID) => {
   try {
     const response = await OMDB.get(`?apikey=${API_KEY}&i=${imdbID}&type=movie&plot=short`);
-    console.log(response.data);
     return response.data.Plot || '';
   } catch (e) {
     return '';
@@ -30,7 +29,7 @@ const fetchSearchData = async (searchTerm, page = 1) => {
         const Plot = await getPlot(item.imdbID);
         return {
           ...item,
-          Plot: Plot.slice(0, 100),
+          Plot: Plot.slice(0, 90),
         };
       }));
       data = dataWithPlot;
@@ -38,7 +37,6 @@ const fetchSearchData = async (searchTerm, page = 1) => {
 
     return { data, count };
   } catch (e) {
-    console.log(e);
     return { data: [], count: 0 };
   }
 };

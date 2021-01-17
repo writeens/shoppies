@@ -21,7 +21,7 @@ const InfoBanner = ({ isOpen, closeModal }) => {
   }, [isOpen]);
   return (
     <div style={{ backgroundColor: '#0000004C' }} className={`${show}  transform transition-all ease-in flex justify-center items-center w-full h-screen font-poppins`}>
-      <div className={`w-1/2 h-1/2 bg-white flex flex-col justify-center items-center rounded-lg shadow-lg relative transform transition-all ease-in-out ${scale} `}>
+      <div className={` w-full h-full sm:w-3/4 sm:h-3/4 md:w-2/3 md:h-2/3 xl:w-1/2 xl:h-1/2 bg-white flex flex-col justify-center items-center text-center rounded-none sm:rounded-lg shadow-lg relative transform transition-all ease-in-out ${scale} `}>
         <button onClick={closeModal} type="button" className="absolute right-6 top-6 focus:outline-none">
           <IoMdClose size={25} color="#C43256" />
         </button>

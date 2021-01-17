@@ -5,7 +5,6 @@ import PropTypes from 'prop-types';
 const MovieCard = ({
   id, title, year, plot, poster, isNominated, isInResult, handleNominate, handleRemoveNomination,
 }) => {
-  console.log(isNominated, title);
   /** HANDLE CLICK BUTTON */
   const handleClick = () => {
     if (isInResult && !isNominated) {

@@ -18,7 +18,7 @@ const SearchResults = ({
       return <p className="text-s-green text-xl text-center">Your search results popup here</p>;
     }
     return (
-      <div style={{ minHeight: '300px' }} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-y-4 gap-x-2">
+      <div style={{ minHeight: '500px' }} className="grid sm:grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-y-4 gap-x-2">
         {searchResults
           .map(({
             imdbID, Title, Year, Plot, Poster, isNominated,
@@ -39,8 +39,8 @@ const SearchResults = ({
     );
   };
   return (
-    <div className="flex flex-col p-2 flex-1 relative">
-      {header && <p className="mb-8 font-bold text-3xl">{`Results for "${header}"`}</p>}
+    <div className="flex flex-col p-2 flex-1 relative mb-8 sm:mb-0">
+      {header && <p className="mb-8 font-bold text-xl md:text-3xl">{`Results for "${header}"`}</p>}
       {renderContent()}
     </div>
   );
