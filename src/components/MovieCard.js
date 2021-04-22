@@ -40,7 +40,7 @@ const MovieCard = ({
 };
 
 MovieCard.defaultProps = {
-  poster: 'https://images.unsplash.com/photo-1603658697717-3729034c37d5?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
+  poster: 'https://images.unsplash.com/photo-1610337673044-720471f83677?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1266&q=80',
   title: 'Unnamed Movie',
   year: '-',
   plot: '',
